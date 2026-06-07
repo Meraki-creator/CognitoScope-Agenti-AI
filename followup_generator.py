@@ -29,8 +29,14 @@ the user's reasoning more deeply.
 Return ONLY the question.
 """
 
-    response = model.generate_content(
-        prompt
-    )
+    try:
 
-    return response.text
+        response = model.generate_content(
+            prompt
+        )
+
+        return response.text
+
+    except Exception as e:
+
+        return f"Follow-up unavailable: {str(e)}"
